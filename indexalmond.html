@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Almond — by Yellow Door, Abuja</title>
+<meta name="description" content="Almond is the newest boutique stay from the team behind Yellow Door Hotels, opening soon in Abuja.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,440;0,9..144,560;1,9..144,400;1,9..144,500&family=Schibsted+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#E8DCC4;
+    --cream-soft:#f1e9d8;
+    --charcoal:#2B2B2E;
+    --maroon:#7A2E35;
+    --gold:#C17F2B;
+    --terracotta:#C97A52;
+    --sage:#7C8870;
+    --maroon-deep:#5e2329;
+    max-width:100vw;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'Schibsted Grotesk', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+
+  .display{
+    font-family:'Fraunces', serif;
+    font-weight:440;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding-left:clamp(20px,5vw,64px);
+    padding-right:clamp(20px,5vw,64px);
+  }
+
+  /* reveal-on-scroll */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px clamp(20px,5vw,64px);
+    background:rgba(232,220,196,0.82);
+    backdrop-filter:blur(8px);
+    transition:background .3s ease;
+  }
+  .nav__mark{display:flex; align-items:center; gap:10px;}
+  .nav__mark svg{width:26px; height:26px;}
+  .nav__word{font-family:'Fraunces',serif; font-weight:560; font-size:1.15rem; letter-spacing:0.01em;}
+  .nav__cta{
+    font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+    border:1px solid var(--charcoal); padding:9px 16px; border-radius:999px;
+    transition:background .25s ease, color .25s ease;
+  }
+  .nav__cta:hover{background:var(--charcoal); color:var(--cream);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:160px 0 110px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero__fan{
+    width:min(360px, 70vw);
+    margin:0 auto 36px;
+  }
+  .hero__fan svg{ width:100%; height:auto; }
+  .leaf-fan-anim{ animation:fanIn 1.1s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes fanIn{
+    from{ opacity:0; transform:scale(.85) translateY(8px); }
+    to{ opacity:1; transform:scale(1) translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce){ .leaf-fan-anim{animation:none;} }
+
+  .hero__eyebrow{ color:var(--maroon); margin-bottom:18px; }
+  .hero h1{
+    font-size:clamp(3.4rem, 11vw, 7.2rem);
+    margin:0 0 18px;
+    line-height:0.95;
+  }
+  .hero__sub{
+    max-width:520px; margin:0 auto 8px;
+    font-size:clamp(1.05rem,2vw,1.25rem);
+    color:#4a4540;
+  }
+  .hero__loc{
+    font-family:'Space Mono',monospace; font-size:0.78rem; letter-spacing:0.08em;
+    color:var(--charcoal); opacity:0.65; margin-top:22px;
+  }
+
+  /* ---------- STORY (dark) ---------- */
+  .story{ background:var(--charcoal); color:var(--cream); padding:120px 0; position:relative; }
+  .story__grid{ display:grid; grid-template-columns: 0.9fr 1.4fr; gap:64px; align-items:start; }
+  .story__fan svg{ width:100%; max-width:220px; opacity:0.92; }
+  .story__eyebrow{ color:var(--terracotta); margin-bottom:22px; }
+  .story blockquote{
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size:clamp(1.6rem,3.4vw,2.5rem);
+    line-height:1.25; margin:0 0 28px; color:var(--cream);
+  }
+  .story p{ font-size:1.05rem; color:#d9cfb8; max-width:560px; }
+  @media (max-width:760px){
+    .story__grid{ grid-template-columns:1fr; gap:36px; }
+    .story__fan svg{ max-width:140px; }
+  }
+
+  /* ---------- FACETS ---------- */
+  .facets{ padding:120px 0 100px; }
+  .facets__head{ max-width:600px; margin-bottom:64px; }
+  .facets__eyebrow{ color:var(--maroon); margin-bottom:18px; }
+  .facets__head h2{ font-size:clamp(2rem,4vw,2.9rem); margin:0 0 14px; font-weight:440; }
+  .facets__head p{ color:#4a4540; font-size:1.05rem; margin:0; }
+
+  .facet-row{
+    display:grid; grid-template-columns:90px 200px 1fr;
+    gap:28px; align-items:flex-start;
+    padding:34px 0; border-top:1px solid rgba(43,43,46,0.15);
+  }
+  .facet-row:last-child{ border-bottom:1px solid rgba(43,43,46,0.15); }
+  .facet-row__leaf svg{ width:48px; height:80px; }
+  .facet-row__name{ font-family:'Fraunces',serif; font-weight:560; font-size:1.4rem; padding-top:4px; }
+  .facet-row__text{ color:#4a4540; max-width:460px; padding-top:6px; }
+  @media (max-width:700px){
+    .facet-row{ grid-template-columns:56px 1fr; }
+    .facet-row__name{ grid-column:2; }
+    .facet-row__text{ grid-column:1 / -1; }
+    .facet-row__leaf{ grid-row:1/3; }
+  }
+
+  /* ---------- GET INVOLVED ---------- */
+  .involve{ background:var(--cream-soft); padding:120px 0 130px; border-top:1px solid rgba(43,43,46,0.12); }
+  .involve__head{ max-width:640px; margin-bottom:54px; }
+  .involve__eyebrow{ color:var(--maroon); margin-bottom:18px; }
+  .involve__head h2{ font-size:clamp(2rem,4vw,2.9rem); margin:0 0 16px; font-weight:440; }
+  .involve__head p{ color:#4a4540; font-size:1.05rem; }
+  .involve__head p b{ color:var(--charcoal); }
+
+  .involve__grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+  @media (max-width:760px){ .involve__grid{ grid-template-columns:1fr; } }
+
+  .icard{
+    display:block; padding:30px 28px; border:1px solid rgba(43,43,46,0.18);
+    border-radius:4px; background:var(--cream); transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .icard:hover{ transform:translateY(-3px); border-color:var(--maroon); box-shadow:0 14px 28px -18px rgba(43,43,46,0.45); }
+  .icard__tag{ color:var(--maroon); margin-bottom:14px; display:block; }
+  .icard__title{ font-family:'Fraunces',serif; font-weight:560; font-size:1.3rem; margin-bottom:8px; }
+  .icard__desc{ color:#4a4540; font-size:0.95rem; margin-bottom:18px; }
+  .icard__go{ font-family:'Space Mono',monospace; font-size:0.74rem; letter-spacing:0.08em; text-transform:uppercase; display:inline-flex; align-items:center; gap:8px; }
+  .icard__go svg{ width:14px; height:14px; transition:transform .25s ease; }
+  .icard:hover .icard__go svg{ transform:translateX(4px); }
+
+  /* ---------- FOOTER ---------- */
+  .foot{ background:var(--charcoal); color:var(--cream); padding:64px 0 36px; }
+  .foot__top{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:28px; margin-bottom:46px; }
+  .foot__mark{ display:flex; align-items:center; gap:12px; }
+  .foot__mark svg{ width:30px; height:30px; }
+  .foot__word{ font-family:'Fraunces',serif; font-weight:560; font-size:1.3rem; }
+  .foot__byline{ font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; opacity:0.6; margin-top:6px; }
+  .foot__contact{ text-align:right; font-size:0.95rem; }
+  .foot__contact a{ border-bottom:1px solid rgba(232,220,196,0.4); }
+  .foot__contact a:hover{ border-color:var(--cream); }
+  .foot__rule{ border:none; border-top:1px solid rgba(232,220,196,0.16); margin:0 0 22px; }
+  .foot__bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.78rem; opacity:0.55; }
+  @media (max-width:600px){ .foot__top{flex-direction:column;} .foot__contact{text-align:left;} }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__mark">
+    <svg viewBox="0 0 60 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M30,100 C12,78 8,46 30,4 C52,46 48,78 30,100 Z" fill="#7A2E35"/>
+    </svg>
+    <span class="nav__word">Almond</span>
+  </div>
+  <a class="nav__cta" href="#involve">Get in touch</a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero__fan leaf-fan-anim" aria-hidden="true">
+      <svg viewBox="-130 -130 260 160" xmlns="http://www.w3.org/2000/svg">
+        <g transform="rotate(-42)"><path d="M0,0 C-26,-24 -30,-64 0,-104 C30,-64 26,-24 0,0 Z" fill="#7C8870"/></g>
+        <g transform="rotate(-14)"><path d="M0,0 C-26,-24 -30,-64 0,-104 C30,-64 26,-24 0,0 Z" fill="#7A2E35"/></g>
+        <g transform="rotate(14)"><path d="M0,0 C-26,-24 -30,-64 0,-104 C30,-64 26,-24 0,0 Z" fill="#C17F2B"/></g>
+        <g transform="rotate(42)"><path d="M0,0 C-26,-24 -30,-64 0,-104 C30,-64 26,-24 0,0 Z" fill="#C97A52"/></g>
+      </svg>
+    </div>
+    <p class="eyebrow hero__eyebrow">A new address, by Yellow Door</p>
+    <h1 class="display">Almond</h1>
+    <p class="hero__sub">Boutique hospitality is opening its third door in Abuja — built, like the first two, from the ground up and chosen leaf by leaf.</p>
+    <p class="hero__loc">ABUJA, NIGERIA &nbsp;·&nbsp; OPENING SOON</p>
+  </div>
+</header>
+
+<!-- ================= STORY ================= -->
+<section class="story">
+  <div class="wrap story__grid">
+    <div class="story__fan reveal" aria-hidden="true">
+      <svg viewBox="-130 -130 260 140" xmlns="http://www.w3.org/2000/svg">
+        <g transform="rotate(-42)"><path d="M0,0 C-26,-24 -30,-64 0,-104 C30,-64 26,-24 0,0 Z" fill="none" stroke="#E8DCC4" stroke-width="1.6" opacity="0.85"/></g>
+        <g transform="rotate(-14)"><path d="M0,0 C-26,-24 -30,-64 0,-104 C30,-64 26,-24 0,0 Z" fill="none" stroke="#E8DCC4" stroke-width="1.6" opacity="0.85"/></g>
+        <g transform="rotate(14)"><path d="M0,0 C-26,-24 -30,-64 0,-104 C30,-64 26,-24 0,0 Z" fill="none" stroke="#E8DCC4" stroke-width="1.6" opacity="0.85"/></g>
+        <g transform="rotate(42)"><path d="M0,0 C-26,-24 -30,-64 0,-104 C30,-64 26,-24 0,0 Z" fill="none" stroke="#E8DCC4" stroke-width="1.6" opacity="0.85"/></g>
+      </svg>
+    </div>
+    <div>
+      <p class="eyebrow story__eyebrow reveal">The idea</p>
+      <blockquote class="reveal">"Branding isn't an afterthought here. The logo, the colors, the aesthetic — every detail is chosen on purpose."</blockquote>
+      <p class="reveal">Almond is the newest property from the team behind Yellow Door Hotels — a boutique stay shaped by the same instinct for craft that built the first two, just dressed in a different palette: warm, earthbound, almond-toned. Before a single guest checks in, the materials on site are being chosen by hand, down to the colour of the table linen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FACETS ================= -->
+<section class="facets">
+  <div class="wrap">
+    <div class="facets__head reveal">
+      <p class="eyebrow facets__eyebrow">What's taking shape</p>
+      <h2 class="display">Still under construction —<br>here's what's coming.</h2>
+      <p>Four parts of Almond, four colours from the same fan.</p>
+    </div>
+
+    <div class="facet-row reveal">
+      <div class="facet-row__leaf"><svg viewBox="0 0 60 100"><path d="M30,100 C12,78 8,46 30,4 C52,46 48,78 30,100 Z" fill="#7A2E35"/></svg></div>
+      <div class="facet-row__name display">The Suites</div>
+      <div class="facet-row__text">A small set of rooms, each considered on its own terms — not a copy of the one next door.</div>
+    </div>
+    <div class="facet-row reveal">
+      <div class="facet-row__leaf"><svg viewBox="0 0 60 100"><path d="M30,100 C12,78 8,46 30,4 C52,46 48,78 30,100 Z" fill="#C17F2B"/></svg></div>
+      <div class="facet-row__name display">The Pool</div>
+      <div class="facet-row__text">A quiet centerpiece built into the courtyard itself, rather than tucked behind it.</div>
+    </div>
+    <div class="facet-row reveal">
+      <div class="facet-row__leaf"><svg viewBox="0 0 60 100"><path d="M30,100 C12,78 8,46 30,4 C52,46 48,78 30,100 Z" fill="#C97A52"/></svg></div>
+      <div class="facet-row__name display">The Pavilion</div>
+      <div class="facet-row__text">A glass-roofed space for events and dinners — open to the sky, sheltered from the weather.</div>
+    </div>
+    <div class="facet-row reveal">
+      <div class="facet-row__leaf"><svg viewBox="0 0 60 100"><path d="M30,100 C12,78 8,46 30,4 C52,46 48,78 30,100 Z" fill="#7C8870"/></svg></div>
+      <div class="facet-row__name display">The Grounds</div>
+      <div class="facet-row__text">Landscaped the way the rest of Almond was chosen: leaf by leaf, colour by colour.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GET INVOLVED ================= -->
+<section class="involve" id="involve">
+  <div class="wrap">
+    <div class="involve__head reveal">
+      <p class="eyebrow involve__eyebrow">Get involved</p>
+      <h2 class="display">Almond isn't open yet —<br>but plenty of people are already reaching out.</h2>
+      <p>So nothing gets lost in the DMs, here's where each kind of message actually belongs. <b>Pick the one that fits and it'll land in the right inbox.</b></p>
+    </div>
+
+    <div class="involve__grid">
+      <a class="icard reveal" href="mailto:hr@yellowdoorhotels.com?subject=Almond%20%E2%80%94%20Stay%20Updates">
+        <span class="eyebrow icard__tag">Stay updates</span>
+        <div class="icard__title display">Join the waitlist</div>
+        <p class="icard__desc">Be first to know when Almond opens its doors.</p>
+        <span class="icard__go">Email us <svg viewBox="0 0 20 20" fill="none"><path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></span>
+      </a>
+      <a class="icard reveal" href="mailto:hr@yellowdoorhotels.com?subject=Almond%20%E2%80%94%20Press%20%26%20Collaboration">
+        <span class="eyebrow icard__tag">Press &amp; collaborations</span>
+        <div class="icard__title display">Tell a story with us</div>
+        <p class="icard__desc">Features, coverage, and content partnerships.</p>
+        <span class="icard__go">Email us <svg viewBox="0 0 20 20" fill="none"><path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></span>
+      </a>
+      <a class="icard reveal" href="mailto:hr@yellowdoorhotels.com?subject=Almond%20%E2%80%94%20Investment%20%26%20Partnership">
+        <span class="eyebrow icard__tag">Investment &amp; partnership</span>
+        <div class="icard__title display">Build the next door</div>
+        <p class="icard__desc">Funding, ownership, and business inquiries.</p>
+        <span class="icard__go">Email us <svg viewBox="0 0 20 20" fill="none"><path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></span>
+      </a>
+      <a class="icard reveal" href="mailto:hr@yellowdoorhotels.com?subject=Almond%20%E2%80%94%20Vendor%20Inquiry">
+        <span class="eyebrow icard__tag">Vendors &amp; suppliers</span>
+        <div class="icard__title display">Help us build it</div>
+        <p class="icard__desc">Materials, design services, and on-site work.</p>
+        <span class="icard__go">Email us <svg viewBox="0 0 20 20" fill="none"><path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div>
+        <div class="foot__mark">
+          <svg viewBox="0 0 60 100" fill="none"><path d="M30,100 C12,78 8,46 30,4 C52,46 48,78 30,100 Z" stroke="#E8DCC4" stroke-width="2"/></svg>
+          <span class="foot__word">Almond</span>
+        </div>
+        <p class="foot__byline">By Yellow Door · Abuja, Nigeria</p>
+      </div>
+      <div class="foot__contact">
+        <a href="mailto:hr@yellowdoorhotels.com">hr@yellowdoorhotels.com</a>
+      </div>
+    </div>
+    <hr class="foot__rule">
+    <div class="foot__bottom">
+      <span>Almond, by Yellow Door</span>
+      <span>An early look at what's coming — not yet an official property page.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, {threshold:0.15});
+    revealEls.forEach(el=>io.observe(el));
+  } else {
+    revealEls.forEach(el=>el.classList.add('is-visible'));
+  }
+  // safety net: never leave content permanently hidden, regardless of observer/timing edge cases
+  window.addEventListener('load', ()=>{
+    setTimeout(()=>revealEls.forEach(el=>el.classList.add('is-visible')), 1800);
+  });
+</script>
+
+</body>
+</html>
